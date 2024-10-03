@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armelec SL - Innovación en Tecnología Eléctrica</title>
+  <style>
+    :root {
+      --primary-color: #0070f3;
+      --secondary-color: #00a8ff;
+      --accent-color: #ff3e00;
+      --background-color: #f0f0f0;
+      --text-color: #333;
+      --light-text: #fff;
+      --dark-bg: #1a1a1a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--light-text);
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    header.scrolled {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: var(--light-text);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 20px;
+    }
+
+    .nav-links a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('/placeholder.svg?height=1080&width=1920') no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: var(--light-text);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease 0.2s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: var(--light-text);
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: fadeInUp 1s ease 0.4s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .cta-button:hover {
+      background-color: #ff5722;
+      transform: translateY(-3px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--primary-color);
+    }
+
+    .products {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 20px;
+      width: calc(33.333% - 40px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .product-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+
+    .innovation {
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+    }
+
+    .innovation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .innovation-item {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .innovation-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .innovation-item i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+
+    .interactive-demo {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: var(--light-text);
+      padding: 100px 0;
+    }
+
+    .demo-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .demo-visual {
+      width: 50%;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .energy-particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ffeb3b;
+      border-radius: 50%;
+      filter: blur(3px);
+    }
+
+    .demo-controls {
+      width: 45%;
+    }
+
+    .demo-slider {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .demo-value {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      margin: 20px;
+      min-width: 200px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .social-icons a {
+      color: var(--light-text);
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        width: calc(50% - 40px);
+      }
+
+      .demo-container {
+        flex-direction: column;
+      }
+
+      .demo-visual, .demo-controls {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-card {
+        width: 100%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary-color);
+        padding: 20px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 10px 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="container">
+    <a href="#" class="logo">Armelec SL</a>
+    <button class="mobile-menu-btn">☰</button>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#innovacion">Innovación</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <h1>El Futuro de la Tecnología Eléctrica</h1>
+      <p>Innovación. Eficiencia. Seguridad.</p>
+      <a href="#productos" class="cta-button">Descubre Nuestros Productos</a>
+    </div>
+  </section>
+
+  <section id="productos" class="section">
+    <div class="container">
+      <h2 class="section-title">Nuestros Productos Revolucionarios</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="/placeholder.svg?height=300&width=400" alt="ArmElite Pro">
+          <h3>ArmElite Pro</h3>
+          <p>Armario eléctrico de última generación con IA integrada para una gestión energética óptima.</p>
+        </div>
+        <div class="product-card">
+          <img src="/placeholder.svg?height=300&width=400" alt="SmartGrid X">
+          <h3>SmartGrid X</h3>
+          <p>Sistema de distribución inteligente para ciudades del futuro, con monitorización en tiempo real.</p>
+        </div>
+        <div class="product-card">
+          <img src="/placeholder.svg?height=300&width=400" alt="EcoVolt">
+          <h3>EcoVolt</h3>
+          <p>Solución de almacenamiento de energía sostenible y eficiente, perfecta para energías renovables.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="innovacion" class="section innovation">
+    <div class="container">
+      <h2 class="section-title">Innovación Constante</h2>
+      <div class="innovation-grid">
+        <div class="innovation-item">
+          <i class="fas fa-bolt"></i>
+          <h3>Eficiencia Energética</h3>
+          <p>Nuestras soluciones optimizan el consumo energético, reduciendo costos y emisiones.</p>
+        </div>
+        <div class="innovation-item">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Seguridad Avanzada</h3>
+          <p>Implementamos las últimas tecnologías en seguridad eléctrica para proteger sus instalaciones.</p>
+        </div>
+        <div class="innovation-item">
+          <i class="fas fa-network-wired"></i>
+          <h3>Integración IoT</h3>
+          <p>Conectamos sus sistemas eléctricos a la red para un control y monitoreo inteligente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" class="interactive-demo">
+    <div class="container">
+      <h2 class="section-title">Experimenta el Futuro</h2>
+      <div class="demo-container">
+        <div class="demo-visual" id="energyVisual"></div>
+        <div class="demo-controls">
+          <h3>Control de Energía</h3>
+          <div class="demo-value" id="energyValue">50%</div>
+          <input type="range" min="0" max="100" value="50" class="demo-slider" id="energySlider">
+          <p>Ajusta el nivel de energía y observa cómo nuestro sistema optimiza la distribución en tiempo real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Sobre Nosotros</h3>
+        <p>Armelec SL es líder en innovación de tecnología eléctrica, comprometidos con un futuro energético eficiente y sostenible.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contacto</h3>
+        <p>Email: info@armelec.es</p>
+        <p>Teléfono: +34 918 843 824</p>
+        <p>Dirección: Polígono industrial Juan y Antonio, 32, 28864, Ajalvir, Madrid, España</p>
+      </div>
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <p>&copy; 2024 Armelec SL. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script>
+  // Navegación suave
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Cambio de estilo del header al hacer scroll
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Menú móvil
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Demo interactiva
+  const energySlider = document.getElementById('energySlider');
+  const energyValue = document.getElementById('energyValue');
+  const energyVisual = document.getElementById('energyVisual');
+
+  energySlider.addEventListener('input', updateEnergyDemo);
+
+  function updateEnergyDemo() {
+    const value = energySlider.value;
+    energyValue.textContent = `${value}%`;
+
+    // Limpiar partículas existentes
+    energyVisual.innerHTML = '';
+
+    // Crear nuevas partículas basadas en el valor de energía
+    const particleCount = Math.floor(value * 0.5);
+    for (let i = 0; i < particleCount; i++) {
+      createEnergyParticle();
+    }
+  }
+
+  function createEnergyParticle() {
+    const particle = document.createElement('div');
+    particle.classList.add('energy-particle');
+
+    // Posición aleatoria
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    particle.style.left = `${x}%`;
+    particle.style.top = `${y}%`;
+
+    // Animación
+    particle.animate([
+      { transform: 'translate(0, 0)', opacity: 1 },
+      { transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`, opacity: 0 }
+    ], {
+      duration: 2000 + Math.random() * 1000,
+      easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+      iterations: Infinity
+    });
+
+    energyVisual.appendChild(particle);
+  }
+
+  // Inicializar la demo
+  updateEnergyDemo();
+
+  // Animación de entrada para las tarjetas de productos
+  const productCards = document.querySelectorAll('.product-card');
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const productObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  productCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(50px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    productObserver.observe(card);
+  });
+
+  // Efecto parallax en la sección hero
+  window.addEventListener('scroll', () => {
+    const scrollPosition = window.pageYOffset;
+    document.querySelector('.hero').style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+  });
+
+  // Animación de contador para estadísticas (ejemplo en la sección de innovación)
+  function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  // Ejemplo de uso (añadir esto a la sección de innovación si se desea)
+  // const innovationStats = document.querySelectorAll('.innovation-stat');
+  // innovationStats.forEach(stat => {
+  //     animateValue(stat, 0, parseInt(stat.getAttribute('data-target')), 2000);
+  // });
+
+  // Lazy loading para imágenes
+  const images = document.querySelectorAll('img');
+  const imageOptions = {
+    threshold: 0,
+    rootMargin: '0px 0px 300px 0px'
+  };
+
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        observer.unobserve(img);
+      }
+    });
+  }, imageOptions);
+
+  images.forEach(img => {
+    imageObserver.observe(img);
+  });
+</script>
+</body>
+</html>

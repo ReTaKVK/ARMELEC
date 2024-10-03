@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos - Armelec SL - Fabricante de Armarios Eléctricos en Madrid</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #7FDBFF;
+      --accent-color: #FF4136;
+      --background-color: #f8f9fa;
+      --text-color: #333;
+      --light-text-color: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: var(--background-color);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--light-text-color);
+      padding: 1rem 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin-right: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .company-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, var(--light-text-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-info {
+      text-align: right;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateX(-5px);
+    }
+
+    .contact-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+      fill: var(--light-text-color);
+    }
+
+    .lightning {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .lightning::before,
+    .lightning::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      width: 10px;
+      height: 100%;
+      transform: rotate(45deg);
+      animation: lightning 3s infinite;
+    }
+
+    .lightning::after {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes lightning {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    nav {
+      background-color: var(--primary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 1rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav ul li {
+      margin: 0 1rem;
+    }
+
+    nav ul li a {
+      color: var(--light-text-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    nav ul li a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--light-text-color);
+    }
+
+    main {
+      flex-grow: 1;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      font-size: 2.5rem;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+
+    .custom-link {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .custom-link:hover {
+      color: var(--accent-color);
+    }
+
+    .catalog {
+      background-color: var(--background-color);
+      padding: 4rem 2rem;
+    }
+
+    .catalog-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-series {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-series:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-series h3 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .product-series p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .product-image {
+      max-width: 300px;
+      height: auto;
+      border-radius: 5px;
+      margin: 1rem 2rem 1rem 0;
+      object-fit: cover;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .product-image:hover {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .product-info ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .product-info li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .product-info li::before {
+      content: '•';
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .pdf-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .pdf-button {
+      background-color: var(--primary-color);
+      color: var(--light-text-color);
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .pdf-button:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .pdf-button i {
+      margin-right: 0.5rem;
+    }
+
+    .cta-section {
+      background-color: var(--primary-color);
+      color: var(--light-text-color);
+      text-align: center;
+      padding: 4rem 2rem;
+      margin-top: 4rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-section h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.8;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+
+    .cta-button:hover {
+      background-color: var(--light-text-color);
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      gap: 2rem;
+    }
+
+    .cta-feature {
+      flex-basis: calc(33.333% - 2rem);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .cta-feature i {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+
+    .cta-feature h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--light-text-color);
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--light-text-color);
+      padding: 2rem 0;
+      margin-top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('path/to/footer-pattern.svg') repeat;
+      opacity: 0.1;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+      flex: 1;
+    }
+
+    .footer-left {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .footer-center {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .footer-logo {
+      width: 120px;
+      height: 120px;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-info .company-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-info .address,
+    .footer-info .phone,
+    .footer-info .email {
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a,
+    .footer-info a {
+      color: var(--light-text-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-info a:hover {
+      color: var(--accent-color);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .footer-legal-links a {
+      color: var(--light-text-color);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-legal-links a:hover {
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-left, .footer-center, .footer-right {
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-right {
+        order: -1;
+      }
+
+      .footer-links {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-links li {
+        margin: 0 0.5rem 0.5rem;
+      }
+    }
+
+
+
+    @media (max-width: 768px) {
+      .header-content,
+
+
+      .contact-info,
+
+
+      .contact-item {
+        justify-content: center;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .menu-toggle.active + ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+      }
+
+      .menu-toggle.active + ul li {
+        margin: 1rem 0;
+      }
+
+      .pdf-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-series {
+        flex-direction: column;
+      }
+
+      .product-image {
+        margin: 1rem 0;
+        max-width: 100%;
+      }
+
+      .cta-feature {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="lightning"></div>
+  <div class="header-content">
+    <div class="logo-container">
+      <img src="../img/logo.png" alt="Armelec SL Logo" class="logo">
+      <h1 class="company-name">Armelec SL</h1>
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/>
+          <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a1 1 0 0 0-.086-1.391l-4.064-3.696z"/>
+        </svg>
+        <span>918 843 824</span>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <a href="https://api.whatsapp.com/send?phone=34675726407" class="custom-link" data-track-event="click" data-track-action="link_clicked">675 726 407</a>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=armelec@armelec.es" target="_blank" rel="noopener" class="custom-link">armelec@armelec.es</a>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=armelec@armelec.es" target="_blank" rel="noopener" class="custom-link">comercial@armelec.es</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="menu-toggle">☰</div>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="quienessomos.html">Quiénes Somos</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="trabajosespeciales.html">Trabajos Especiales</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="catalog">
+    <div class="catalog-content">
+      <h2>Catálogo de Productos</h2>
+
+      <div class="pdf-buttons">
+        <a href="../pdfs/ArmelecCatlogogeneral.pdf" class="pdf-button" download target="_blank">
+          <i class="fas fa-file-pdf"></i> Descargar Catálogo General
+        </a>
+        <a href="../pdfs/CatlogoElectricidadArmelecOPT.pdf" class="pdf-button" download target="_blank">
+          <i class="fas fa-file-pdf"></i> Descargar Catálogo de Eléctricos
+        </a>
+      </div>
+
+      <div class="product-series">
+        <h3>Serie Mural</h3>
+        <img src="../img/9.jpg" alt="Serie Mural Armelec SL" class="product-image">
+        <div class="product-info">
+          <p>Nuestra Serie Mural ofrece soluciones de vanguardia para pequeñas redes, combinando seguridad, accesibilidad y eficiencia en un diseño compacto y versátil.</p>
+          <ul>
+            <li>Puerta frontal de cristal de seguridad para protección y visualización del interior</li>
+            <li>Partes laterales desmontables para fácil acceso y mantenimiento</li>
+            <li>Pretroquelados superior e inferior para una gestión de cables optimizada</li>
+            <li>Construcción en acero de 1,2 mm de espesor para máxima durabilidad</li>
+            <li>Disponible en tamaños desde 4U hasta 18U, pre-ensamblados para una instalación inmediata</li>
+            <li>Compatibilidad con estándares de 19 pulgadas para una amplia gama de equipos</li>
+            <li>Acabado en pintura electrostática para una protección duradera contra la corrosión</li>
+          </ul>
+          <p>Ideal para oficinas, pequeñas empresas y entornos que requieren una solución de red compacta y eficiente.</p>
+        </div>
+      </div>
+
+      <div class="product-series">
+        <h3>Serie Rack Universal</h3>
+        <img src="../img/10.jpg" alt="Serie Rack Universal Armelec SL" class="product-image">
+        <div class="product-info">
+          <p>Nuestra Serie Rack Universal representa la culminación de la innovación en diseño de racks, ofreciendo una solución integral para las necesidades más exigentes de infraestructura de red.</p>
+          <ul>
+            <li>Estructura modular y totalmente desmontable para una flexibilidad sin precedentes</li>
+            <li>Sistema de ventilación avanzado con opción de incorporar unidades de ventilación profesionales</li>
+            <li>Puerta frontal de cristal de seguridad templado con cerradura</li>
+            <li>Diseño optimizado para una organización eficiente y acceso simplificado a los equipos</li>
+            <li>Perfiles de acero de 19 pulgadas con alta capacidad de carga (hasta 1000 kg)</li>
+            <li>Múltiples puntos de entrada de cables para una gestión flexible</li>
+            <li>Compatibilidad con una amplia gama de accesorios para personalización</li>
+            <li>Acabado con pintura en polvo antiestática para durabilidad y estética profesional</li>
+          </ul>
+          <p>Perfecto para centros de datos, salas de servidores y entornos que requieren alta densidad de equipos con máxima accesibilidad y refrigeración eficiente.</p>
+        </div>
+      </div>
+
+      <div class="product-series">
+        <h3>Serie Rack Armelec</h3>
+        <img src="../img/11.jpg" alt="Serie Rack Armelec SL" class="product-image">
+        <div class="product-info">
+          <p>La Serie Rack Armelec es nuestra línea insignia, diseñada para ofrecer el máximo rendimiento y versatilidad en entornos de red profesionales.</p>
+          <ul>
+            <li>Diseño ergonómico que facilita la instalación y mantenimiento de equipos</li>
+            <li>Estructura robusta con perfiles de acero de 19 pulgadas de alta resistencia</li>
+            <li>Sistema de ventilación superior con opción de integrar hasta 4 ventiladores</li>
+            <li>Puertas reversibles con apertura de 180° para acceso total</li>
+            <li>Paneles laterales desmontables con cierre de seguridad</li>
+            <li>Múltiples opciones de profundidad para adaptarse a diversos equipos</li>
+            <li>Capacidad de carga estática de hasta 1500 kg</li>
+            <li>Cumplimiento con estándares internacionales (EIA-310, IEC 60297, DIN 41494)</li>
+          </ul>
+          <p>Ideal para infraestructuras de TI empresariales, centros de datos y aplicaciones que requieren alta densidad de equipos con gestión térmica avanzada.</p>
+        </div>
+      </div>
+
+      <div class="product-series">
+        <h3>Serie Exteriores</h3>
+        <img src="../img/12.jpg" alt="Serie Exteriores Armelec SL" class="product-image">
+        <div class="product-info">
+          <p>Nuestra Serie Exteriores está diseñada para proteger equipos críticos en los entornos más desafiantes, combinando durabilidad extrema con funcionalidad avanzada.</p>
+          <ul>
+            <li>Grado de protección IP66 contra polvo y agua, ideal para condiciones extremas</li>
+            <li>Construcción en acero galvanizado y aluminio para máxima resistencia a la corrosión</li>
+            <li>Sistema de climatización integrado para mantener temperaturas óptimas</li>
+            <li>Doble puerta con sellado hermético y sistema de cierre de seguridad</li>
+            <li>Diseño modular para fácil instalación y mantenimiento en campo</li>
+            <li>Compatibilidad con equipos de 19" y opciones de montaje personalizadas</li>
+            <li>Protección UV y acabado resistente a la intemperie</li>
+            <li>Opciones de alimentación solar para ubicaciones remotas</li>
+          </ul>
+          <p>Perfecto para telecomunicaciones exteriores, sistemas de seguridad, estaciones de monitoreo ambiental y cualquier aplicación que requiera protección robusta en exteriores.</p>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h3>Soluciones de Vanguardia para su Infraestructura</h3>
+        <p>En Armelec SL, nos dedicamos a superar los estándares de la industria con nuestras soluciones de armarios eléctricos y racks. Nuestra experiencia abarca desde pequeñas oficinas hasta grandes centros de datos, ofreciendo productos diseñados para satisfacer las necesidades más exigentes del mercado actual.</p>
+        <div class="cta-features">
+          <div class="cta-feature">
+            <i class="fas fa-chart-line"></i>
+            <h4>25+ Años de Experiencia</h4>
+            <p>Trayectoria probada en el sector</p>
+          </div>
+          <div class="cta-feature">
+            <i class="fas fa-lightbulb"></i>
+            <h4>Innovación Continua</h4>
+            <p>Siempre a la vanguardia tecnológica</p>
+          </div>
+          <div class="cta-feature">
+            <i class="fas fa-award"></i>
+            <h4>Calidad Garantizada</h4>
+            <p>Compromiso inquebrantable con la excelencia</p>
+          </div>
+        </div>
+        <p>Estamos preparados para enfrentar cualquier desafío en infraestructura de TI y eléctrica. ¿Listo para llevar su infraestructura al siguiente nivel?</p>
+        <a href="index.html#contacto" class="cta-button">Solicite su Consulta Personalizada</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-left">
+      <img src="../img/logo.png" alt="Armelec SL Logo" class="footer-logo">
+    </div>
+    <div class="footer-center">
+      <div class="footer-info">
+        <p class="company-name">Armelec SL</p>
+        <p class="address">
+          <a href="https://www.google.es/maps/place/Armelec+SL/@40.5203494,-3.4838427,17z/data=!3m1!4b1!4m6!3m5!1s0xd42341540e91f33:0x7576e9b59415562c!8m2!3d40.5203494!4d-3.4812624!16s%2Fg%2F11hd4x6sc7?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+            📍 Polígono industrial Juan y Antonio, 32, 28864, Ajalvir, Madrid, España
+          </a>
+        </p>
+        <p class="phone">Tel: +34 918 843 824</p>
+        <a href="mailto:armelec@armelec.es" class="email">armelec@armelec.es</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quienessomos.html">Quiénes Somos</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="trabajosespeciales.html">Trabajos Especiales</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal-links">
+      <a href="politica-privacidad.html">Políticas de Privacidad</a> |
+      <a href="aviso-legal.html">Aviso Legal</a> |
+      <a href="politica-cookies.html">Políticas de Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav ul');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    nav.classList.toggle('active');
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Add animation to CTA features on scroll
+  const ctaFeatures = document.querySelectorAll('.cta-feature');
+  const animateOnScroll = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(animateOnScroll, {
+    root: null,
+    threshold: 0.1
+  });
+
+  ctaFeatures.forEach(feature => {
+    feature.style.opacity = 0;
+    feature.style.transform = 'translateY(20px)';
+    feature.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(feature);
+  });
+</script>
+</body>
+</html>

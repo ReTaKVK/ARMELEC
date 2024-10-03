@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Cookies - Armelec SL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --secondary-color: #7FDBFF;
+      --accent-color: #FF4136;
+      --background-color: #f8f9fa;
+      --text-color: #333;
+      --light-text-color: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: var(--background-color);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--light-text-color);
+      padding: 1rem 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin-right: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .company-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, var(--light-text-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-info {
+      text-align: right;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateX(-5px);
+    }
+
+    .contact-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+      fill: var(--light-text-color);
+    }
+
+    .lightning {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .lightning::before,
+    .lightning::after {
+      content: '';
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      width: 10px;
+      height: 100%;
+      transform: rotate(45deg);
+      animation: lightning 3s infinite;
+    }
+
+    .lightning::after {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes lightning {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    nav {
+      background-color: var(--primary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 1rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav ul li {
+      margin: 0 1rem;
+    }
+
+    nav ul li a {
+      color: var(--light-text-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    nav ul li a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--light-text-color);
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 4rem 2rem;
+    }
+
+    .legal-content {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .legal-content h2 {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .legal-content h3 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .legal-content p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .legal-content ul {
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+    }
+
+    .legal-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+
+    .legal-content th, .legal-content td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .legal-content th {
+      background-color: var(--primary-color);
+      color: var(--light-text-color);
+    }
+
+    .legal-content tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--light-text-color);
+      padding: 2rem 0;
+      margin-top: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('path/to/footer-pattern.svg') repeat;
+      opacity: 0.1;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+      flex: 1;
+    }
+
+    .footer-left {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .footer-center {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .footer-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .footer-logo {
+      width: 120px;
+      height: 120px;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .footer-info .company-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-info .address,
+    .footer-info .phone,
+    .footer-info .email {
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a,
+    .footer-info a {
+      color: var(--light-text-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-info a:hover {
+      color: var(--accent-color);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    .footer-legal-links a {
+      color: var(--light-text-color);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-legal-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .custom-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .custom-link:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .header-content,
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-info,
+      .footer-info {
+        margin-top: 1rem;
+        text-align: center;
+      }
+
+      .contact-item {
+        justify-content: center;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .menu-toggle.active + ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+      }
+
+      .menu-toggle.active + ul li {
+        margin: 1rem 0;
+      }
+
+      .footer-left, .footer-center, .footer-right {
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-right {
+        order: -1;
+      }
+
+      .footer-links {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-links li {
+        margin: 0 0.5rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="lightning"></div>
+  <div class="header-content">
+    <div class="logo-container">
+      <img src="../img/logo.png" alt="Armelec SL Logo" class="logo">
+      <h1 class="company-name">Armelec SL</h1>
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M20 10.999h2C22 5.869 18.127 2 12.99 2v2C17.052 4 20 6.943 20 10.999z"/>
+          <path d="M13 8c2.103 0 3 .897 3 3h2c0-3.225-1.775-5-5-5v2zm3.422 5.443a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a1 1 0 0 0-.086-1.391l-4.064-3.696z"/>
+        </svg>
+        <span>918 843 824</span>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <a href="https://api.whatsapp.com/send?phone=34675726407" class="custom-link" data-track-event="click" data-track-action="link_clicked">675 726 407</a>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=armelec@armelec.es" target="_blank" rel="noopener" class="custom-link">armelec@armelec.es</a>
+      </div>
+      <div class="contact-item">
+        <svg class="contact-icon" viewBox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=armelec@armelec.es" target="_blank" rel="noopener" class="custom-link">comercial@armelec.es</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="menu-toggle">☰</div>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="quienessomos.html">Quiénes Somos</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="trabajosespeciales.html">Trabajos Especiales</a></li>
+    <li><a href="index.html#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section class="legal-content">
+    <h2>Política de Cookies</h2>
+    <h3>Objeto</h3>
+    <p>El objeto de la presente política es informar del uso de cookies en este sitio web de acuerdo con lo establecido en la legislación de los servicios de la sociedad de la información y de comercio electrónico.</p>
+
+    <h3>¿Qué son las Cookies y para qué se utilizan?</h3>
+    <p>Las cookies son ficheros o archivos de texto que un servidor web genera y almacena en el ordenador/smartphone/tablet (en adelante equipo) de un Usuario al acceder a determinadas páginas web, para almacenar y recuperar información sobre la navegación que realiza el usuario desde dicho equipo. También pueden consistir en un código que permite identificar al Usuario inequívocamente durante su navegación.</p>
+
+    <p>El uso de cookies en la navegación a través del sitio web permite obtener información relativa a la navegación de los usuarios; mejorar la experiencia del usuario en la navegación; recoger las estadísticas de uso del sitio web por el Usuario y otras informaciones como el navegador empleado por el Usuario, el número de páginas visitadas, el número de visitas, el rastreo de los movimientos que hace el Usuario por un sitio web, el tiempo que permanece en el sitio web o en una página concreta, el llenado o vaciado de la cesta de la compra, y otras informaciones.</p>
+
+    <h3>¿Cómo se autoriza el uso de las cookies en nuestro sitio web?</h3>
+    <p>En relación con el uso de cookies en este sitio web, el Usuario debe saber que nos autoriza y consiente el uso de cookies de la siguiente forma:</p>
+
+    <ul>
+      <li>Acepta el uso de las cookies utilizadas en este sitio web para las finalidades indicadas en esta política si marca o pincha el aviso de ACEPTO que se publica en la primera capa de información.</li>
+    </ul>
+
+    <h3>¿Cuáles son las cookies de terceros utilizadas y la finalidad de uso en el sitio web?</h3>
+    <table>
+      <tr>
+        <th>Solución de Terceros</th>
+        <th>Tipo/Propósito</th>
+        <th>Proveedor</th>
+        <th>Política de Privacidad y opciones</th>
+      </tr>
+      <tr>
+        <td>Google Analytics</td>
+        <td>Ubicación, Analíticas, Vídeos, Interacción Social</td>
+        <td>Google Inc.</td>
+        <td><a href="https://support.google.com/analytics/answer/6004245?hl=es" class="custom-link">Privacidad</a>, <a href="https://tools.google.com/dlpage/gaoptout" class="custom-link">Rechazar</a></td>
+      </tr>
+      <tr>
+        <td>Add to any</td>
+        <td>Interacción social</td>
+        <td>AddToAny</td>
+        <td><a href="https://www.addtoany.com/privacy" class="custom-link">Privacidad</a>, <a href="https://static.addtoany.com/.well-known/dnt-policy.txt" class="custom-link">No rastrear</a>, <a href="https://optout.networkadvertising.org/?c=1" class="custom-link">Rechazar publi. 3º</a></td>
+      </tr>
+      <tr>
+        <td>AddThis</td>
+        <td>Herramientas Web, Interacción social</td>
+        <td>Oracle Inc.</td>
+        <td><a href="https://www.addthis.com/privacy/privacy-policy/" class="custom-link">Privacidad</a>, <a href="https://www.addthis.com/privacy/opt-out" class="custom-link">Rechazar</a></td>
+      </tr>
+      <tr>
+        <td>Adobe Omniture</td>
+        <td>Analíticas</td>
+        <td>Adobe Systems Incorporated</td>
+        <td><a href="https://www.adobe.com/es/privacy/marketing-cloud.html" class="custom-link">Privacidad</a>, <a href="https://www.adobe.com/es/privacy/cookies.html" class="custom-link">Cookies</a>, <a href="https://www.adobe.com/es/privacy/opt-out.html" class="custom-link">Rechazar</a></td>
+      </tr>
+      <tr>
+        <td>YouTube</td>
+        <td>Web Video</td>
+        <td>Google Inc.</td>
+        <td><a href="https://about.youtube/#community-guidelines" class="custom-link">Privacidad</a></td>
+      </tr>
+      <tr>
+        <td>Facebook</td>
+        <td>Facebook Like, Comments, Feed</td>
+        <td>Facebook Inc.</td>
+        <td><a href="https://www.facebook.com/privacy/policy/?entry_point=data_policy_redirect&entry=0" class="custom-link">Privacidad</a>, <a href="https://developers.facebook.com/docs/plugins" class="custom-link">Complementos</a></td>
+      </tr>
+      <tr>
+        <td>Twitter</td>
+        <td>Follow Us</td>
+        <td>Twitter Inc.</td>
+        <td><a href="https://x.com/privacy?lang=es" class="custom-link">Privacidad</a>, <a href="https://about.x.com/es/about/resources/buttons" class="custom-link">Complementos</a></td>
+      </tr>
+    </table>
+
+    <h3>¿Cómo se puede rechazar, desactivar y eliminar las cookies utilizadas en nuestro sitio web?</h3>
+    <p>El Usuario tiene la opción de impedir o rechazar el uso de cookies, desactivar y eliminarlas en cualquier momento respecto de su navegación por este sitio web.</p>
+
+    <p>La mayoría de navegadores web permite gestionar, en cualquier momento, las preferencias del Usuario sobre el uso de las Cookies. El Usuario puede ajustar su navegador para que rechace Cookies o elimine determinadas Cookies según su criterio.</p>
+
+    <p>Para la configuración de nuestras Cookies (permitir, bloquear o eliminar las Cookies) y las de terceros el Usuario puede hacerlo mediante la configuración de las opciones del navegador instalado en su ordenador.</p>
+
+    <ul>
+      <li><a href="https://support.mozilla.org/es/kb/Deshabilitar%20cookies%20de%20terceros" class="custom-link">Firefox</a></li>
+      <li><a href="http://support.google.com/chrome/bin/answer.py?hl=es&answer=95647" class="custom-link">Chrome</a></li>
+      <li><a href="http://windows.microsoft.com/es-es/internet-explorer/delete-manage-cookies#ie=ie-11" class="custom-link">Internet Explorer</a></li>
+      <li>Safari -> Seleccione Safari > Preferencias, haga clic en Privacidad</li>
+      <li><a href="http://help.opera.com/Windows/11.50/es-ES/cookies.html" class="custom-link">Opera</a></li>
+      <li><a href="https://support.microsoft.com/es-es/help/10635/windows-phone-change-privacy-and-other-browser-settings" class="custom-link">Windows Phone</a></li>
+      <li>Android ->Ajustes del navegador utilizado->Privacidad del navegador utilizado</li>
+    </ul>
+
+    <h3>Actualizaciones y cambios en la Política de cookies</h3>
+    <p>El responsable puede modificar esta Política de Cookies en función de cambios en el uso de Cookies en su sitio web, de nuevas exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por las autoridades de control, en concreto, la Agencia Española de Protección de Datos.</p>
+
+    <p>Es posible que se produzcan cambios significativos en esta Política de Cookies los cuales serán publicados en la misma. Pero será responsabilidad del Usuario acceder a esta Política de forma periódica para conocer cualquier cambio, sin perjuicio de la posibilidad de comunicar a los usuarios del sitio web dichos cambios mediante un aviso informativo en nuestro sitio web y/o a través de otros medios.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-left">
+      <img src="../img/logo.png" alt="Armelec SL Logo" class="footer-logo">
+    </div>
+    <div class="footer-center">
+      <div class="footer-info">
+        <p class="company-name">Armelec SL</p>
+        <p class="address">
+          <a href="https://www.google.es/maps/place/Armelec+SL/@40.5203494,-3.4838427,17z/data=!3m1!4b1!4m6!3m5!1s0xd42341540e91f33:0x7576e9b59415562c!8m2!3d40.5203494!4d-3.4812624!16s%2Fg%2F11hd4x6sc7?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+            📍 Polígono industrial Juan y Antonio, 32, 28864, Ajalvir, Madrid, España
+          </a>
+        </p>
+        <p class="phone">Tel: +34 918 843 824</p>
+        <a href="mailto:armelec@armelec.es" class="email">armelec@armelec.es</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quienessomos.html">Quiénes Somos</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="trabajosespeciales.html">Trabajos Especiales</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal-links">
+      <a href="politica-privacidad.html">Política de Privacidad</a> |
+      <a href="aviso-legal.html">Aviso Legal</a> |
+      <a href="politica-cookies.html">Política de Cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Menu toggle functionality
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav ul');
+
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    nav.classList.toggle('active');
+  });
+
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+</body>
+</html>

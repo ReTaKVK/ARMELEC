@@ -1,0 +1,236 @@
+// File: index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Armelec SL - Revolucionando la Industria Eléctrica Global</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"></script>
+  <style>
+    :root {
+      --primary-color: #00ffff;
+      --secondary-color: #ff00ff;
+      --accent-color: #ffff00;
+      --background-color: #000000;
+      --text-color: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    #app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .futuristic-button {
+      background-color: var(--primary-color);
+      color: var(--background-color);
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 0 20px var(--primary-color);
+    }
+
+    .futuristic-button:hover {
+      background-color: var(--secondary-color);
+      box-shadow: 0 0 30px var(--secondary-color);
+    }
+
+    #three-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+<div id="app"></div>
+<div id="three-container"></div>
+
+<script type="text/babel">
+  // React Components
+  const Header = () => (
+    <header style={{padding: '20px', textAlign: 'center'}}>
+      <h1 style={{fontSize: '3em', marginBottom: '20px'}}>Armelec SL</h1>
+      <p>Revolucionando la Industria Eléctrica Global con IA y Blockchain</p>
+    </header>
+  );
+
+  const Navigation = () => (
+    <nav style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
+      {['Inicio', 'Servicios', 'Innovación', 'Contacto'].map(item => (
+        <a key={item} href={`#${item.toLowerCase()}`} style={{margin: '0 15px', color: 'var(--text-color)', textDecoration: 'none'}}>
+          {item}
+        </a>
+      ))}
+    </nav>
+  );
+
+  const AIComponent = () => {
+    const [prediction, setPrediction] = React.useState('');
+
+    React.useEffect(() => {
+      // Simulated AI prediction
+      const simulateAIPrediction = async () => {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        setPrediction('Predicción de demanda eléctrica: Aumento del 15% en los próximos 6 meses');
+      };
+      simulateAIPrediction();
+    }, []);
+
+    return (
+      <div style={{margin: '20px 0', padding: '20px', backgroundColor: 'rgba(255,255,255,0.1)'}}>
+        <h3>Inteligencia Artificial en Acción</h3>
+        <p>{prediction || 'Analizando datos...'}</p>
+      </div>
+    );
+  };
+
+  const BlockchainComponent = () => {
+    const [contractAddress, setContractAddress] = React.useState('');
+
+    React.useEffect(() => {
+      // Simulated blockchain interaction
+      const simulateBlockchainInteraction = async () => {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        setContractAddress('0x742d35Cc6634C0532925a3b844Bc454e4438f44e');
+      };
+      simulateBlockchainInteraction();
+    }, []);
+
+    return (
+      <div style={{margin: '20px 0', padding: '20px', backgroundColor: 'rgba(255,255,255,0.1)'}}>
+        <h3>Tecnología Blockchain</h3>
+        <p>Contrato inteligente desplegado en: {contractAddress || 'Conectando a la blockchain...'}</p>
+      </div>
+    );
+  };
+
+  const ContactForm = () => {
+    const [formData, setFormData] = React.useState({name: '', email: '', message: ''});
+
+    const handleChange = (e) => {
+      setFormData({...formData, [e.target.name]: e.target.value});
+    };
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      alert(`Gracias por tu mensaje, ${formData.name}. Te contactaremos pronto.`);
+    };
+
+    return (
+      <form onSubmit={handleSubmit} style={{display: 'flex', flexDirection: 'column', maxWidth: '500px', margin: '0 auto'}}>
+        <input type="text" name="name" placeholder="Nombre" onChange={handleChange} required style={{margin: '10px 0', padding: '10px'}} />
+        <input type="email" name="email" placeholder="Email" onChange={handleChange} required style={{margin: '10px 0', padding: '10px'}} />
+        <textarea name="message" placeholder="Mensaje" onChange={handleChange} required style={{margin: '10px 0', padding: '10px', height: '100px'}} />
+        <button type="submit" className="futuristic-button">Enviar</button>
+      </form>
+    );
+  };
+
+  const App = () => (
+    <React.Fragment>
+      <Header />
+      <Navigation />
+      <main style={{flex: 1, padding: '20px'}}>
+        <section id="inicio">
+          <h2>Bienvenido al Futuro de la Electricidad</h2>
+          <p>Armelec SL está a la vanguardia de la revolución eléctrica, combinando tecnologías avanzadas para crear soluciones sin precedentes.</p>
+        </section>
+        <section id="servicios">
+          <h2>Nuestros Servicios Revolucionarios</h2>
+          <ul>
+            <li>Armarios eléctricos inteligentes con IA integrada</li>
+            <li>Sistemas de distribución eléctrica basados en blockchain</li>
+            <li>Soluciones de energía renovable con aprendizaje automático</li>
+          </ul>
+        </section>
+        <section id="innovacion">
+          <h2>Innovación en Tiempo Real</h2>
+          <AIComponent />
+          <BlockchainComponent />
+        </section>
+        <section id="contacto">
+          <h2>Contacta con Nosotros</h2>
+          <ContactForm />
+        </section>
+      </main>
+      <footer style={{textAlign: 'center', padding: '20px', marginTop: '40px'}}>
+        <p>© 2024 Armelec SL - Liderando la Revolución Eléctrica Global</p>
+      </footer>
+    </React.Fragment>
+  );
+
+  ReactDOM.render(<App />, document.getElementById('app'));
+
+  // Three.js Background
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById('three-container').appendChild(renderer.domElement);
+
+  const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+  const material = new THREE.MeshBasicMaterial({color: 0x00ffff, wireframe: true});
+  const torusKnot = new THREE.Mesh(geometry, material);
+  scene.add(torusKnot);
+
+  camera.position.z = 30;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    torusKnot.rotation.x += 0.01;
+    torusKnot.rotation.y += 0.01;
+    renderer.render(scene, camera);
+  }
+  animate();
+</script>
+
+<script>
+  // Simulated backend connection (Node.js would typically handle this)
+  console.log('Conectando al servidor backend...');
+  setTimeout(() => {
+    console.log('Conexión al backend establecida.');
+  }, 2000);
+
+  // AI Model Loading Simulation
+  console.log('Cargando modelo de IA...');
+  tf.ready().then(() => {
+    console.log('Modelo de IA cargado y listo para predicciones.');
+  });
+
+  // Blockchain Connection Simulation
+  console.log('Inicializando conexión a la blockchain...');
+  const provider = new ethers.providers.JsonRpcProvider('https://mainnet.infura.io/v3/YOUR-PROJECT-ID');
+  provider.getBlockNumber().then((blockNumber) => {
+    console.log('Conectado a la blockchain. Último bloque:', blockNumber);
+  });
+</script>
+</body>
+</html>
